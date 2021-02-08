@@ -1,9 +1,14 @@
 package com.example.demo;
 
+import com.example.demo.student.Student;
+import com.sun.tools.javac.util.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
+import java.time.Month;
 
 @SpringBootApplication
 @RestController
@@ -13,7 +18,14 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 	@GetMapping
-	public String hello(){
-		return "Hello World!";
+	public List<Student> hello(){
+		// it will look json format
+		return List.of(new Student(
+				1L,
+				"Ahmet",
+				"ahmetzumber5@gmail.com",
+				LocalDate.of(2000, Month.FEBRUARY,9),
+				22
+		));
 	}
 }
